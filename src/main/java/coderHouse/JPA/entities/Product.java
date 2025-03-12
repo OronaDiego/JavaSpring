@@ -1,4 +1,4 @@
-package coderHouse.JPA.entity;
+package coderHouse.JPA.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

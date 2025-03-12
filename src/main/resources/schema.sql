@@ -1,11 +1,9 @@
-DROP TABLE ALUMNO IF EXISTS;
+            -- Crear el esquema si no existe
+            CREATE SCHEMA IF NOT EXISTS facturacion;
 
-CREATE TABLE ALUMNO(
-    nombre VARCHAR(150) NOT NULL,
-    apellido VARCHAR(150) NOT NULL,
-    dni INT NOT NULL,
-    legajo INT NOT NULL
-);
+            -- Usar el esquema
+            USE facturacion;
+
             CREATE TABLE IF NOT EXISTS clients (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR(75),

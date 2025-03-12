@@ -1,3 +1,3 @@
-INSERT INTO ALUMNO(nombre, apellido, dni, legajo)
-VALUES('Diego', 'Oroná', 123456789, 0001),
-('Deco', 'Oro',987654321, 0002);
+-- Insertar cliente primero
+INSERT INTO clients (id, name, lastname,doc_number) VALUES
+(1,'Nombre1','Apellido1', 123456789);

@@ -28,6 +28,9 @@ public class Client {
         this.doc_number = doc_number;
     }
 
+    public Client() {
+    }
+
     public int getId() {
         return id;
     }

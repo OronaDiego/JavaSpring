@@ -9,18 +9,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "clients")
-@Data
-@NoArgsConstructor  // Genera constructor vacío (requerido por JPA)
-@AllArgsConstructor // Genera constructor con todos los atributos
+@Table(name = "client")
+//@Data
+//@NoArgsConstructor  // Genera constructor vacío (requerido por JPA)
+//@AllArgsConstructor // Genera constructor con todos los atributos
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String lastname;
-    private String docNumber;
+    private String doc_number;
 
+    public Client(int id, String name, String lastname, String doc_number) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.doc_number = doc_number;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getDoc_number() {
+        return doc_number;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setDocNumber(String docNumber) {
+        this.doc_number = doc_number;
+    }
     //Getter y Setters Para acceder y modificar los atributos privados de la clase.
     //Con lombook no es necesario crear Getter Y Setter ya que con @data los genera automaticamente
 

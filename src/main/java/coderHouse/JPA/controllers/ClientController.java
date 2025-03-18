@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/clients")
+@RestController //Mediante esta anotacion defino que esta clase va a ser un controlador
+@RequestMapping("/clients") // aca indico la direccion para acceder a este controlador
 public class ClientController {
 
     private final ClientServices clientServices;

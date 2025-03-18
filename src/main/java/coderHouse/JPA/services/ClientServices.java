@@ -7,21 +7,44 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service // informo que esta clase es un servicio para luego poder inyectarlo en cualquier parte de nuestro programa
 public class ClientServices {
     @Autowired   //Esta anotacion es para inyectar la dependencia
     private ClientRepository clientRepository;
 
-    //private final JdbcTemplate jdbc;  // eso no permite trabajar con el Driver de Java
-    //public ClientServices(JdbcTemplate jdbc){
-    //    this.jdbc = jdbc;
-    //}
-
     public void saveClient(Client clients){
       this.clientRepository.save(clients);
     }
+    public Optional<Client> getClient(Integer id){
+        return this.clientRepository.findById(id);
+    }
+
     public List<Client> getClient(){
         return this.clientRepository.findAll();
+    }
+    public Optional<Client> updateClient(Integer id, Client client){
+        Optional<Client> clientDB= this.clientRepository.findById(id);
+
+        if(clientDB.isEmpty()){
+            return Optional.empty();
+        }
+        clientDB.get().setName(client.getName());
+        clientDB.get().setLastname(client.getLastname());
+        clientDB.get().setDocNumber(client.getDoc_number());
+
+        this.clientRepository.save(clientDB.get());
+        return clientDB;
+    }
+
+    public Optional<Client> deleteClient(Integer id){
+        Optional<Client> clientDB= this.clientRepository.findById(id);
+
+        if(clientDB.isEmpty()){
+            return Optional.empty();
+        }
+        this.clientRepository.deleteById(id);
+        return clientDB;
     }
 }

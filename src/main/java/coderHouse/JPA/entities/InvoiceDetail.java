@@ -22,6 +22,46 @@ public class InvoiceDetail {
     @Schema(defaultValue = "factura", requiredMode = Schema.RequiredMode.REQUIRED, example = "1")
     private Invoice invoice;
 
+    public int getId() {
+        return id;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false) // No puede haber detalle sin producto)
     @Schema(defaultValue = "Product", requiredMode = Schema.RequiredMode.REQUIRED, example = "Repelente OFF")

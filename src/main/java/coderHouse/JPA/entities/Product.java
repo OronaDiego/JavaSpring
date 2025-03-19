@@ -41,6 +41,54 @@ public class Product {
     @Schema(defaultValue = "ProducPrecio", requiredMode = Schema.RequiredMode.REQUIRED, example = "99.9")
     private double price;
 
+    public int getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public List<InvoiceDetail> getInvoiceDetails() {
+        return invoiceDetails;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setInvoiceDetails(List<InvoiceDetail> invoiceDetails) {
+        this.invoiceDetails = invoiceDetails;
+    }
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL , orphanRemoval = true)
     private List<InvoiceDetail> invoiceDetails = new ArrayList<>();
 }

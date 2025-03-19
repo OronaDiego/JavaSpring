@@ -33,6 +33,46 @@ public class Invoice {
     @Schema(defaultValue = "TotalFac", requiredMode = Schema.RequiredMode.REQUIRED, example = "99.9")
     private double total;
 
+    public int getId() {
+        return id;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public List<InvoiceDetail> getDetails() {
+        return details;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public void setDetails(List<InvoiceDetail> details) {
+        this.details = details;
+    }
+
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InvoiceDetail> details= new ArrayList<>();
 }

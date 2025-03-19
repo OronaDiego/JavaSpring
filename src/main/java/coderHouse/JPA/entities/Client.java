@@ -1,5 +1,6 @@
 package coderHouse.JPA.entities;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,12 +14,24 @@ import java.util.List;
 //@Data
 //@NoArgsConstructor  // Genera constructor vacío (requerido por JPA)
 //@AllArgsConstructor // Genera constructor con todos los atributos
+//No me funcionaron con lombook
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Schema(defaultValue = "ClientID", requiredMode = Schema.RequiredMode.AUTO, example = "1")
     private int id;
+
+    @Column(nullable = false)
+    @Schema(defaultValue = "ClientName", requiredMode = Schema.RequiredMode.REQUIRED, example = "Juan")
     private String name;
+
+    @Column(nullable = false)
+    @Schema(defaultValue = "ClientLastName", requiredMode = Schema.RequiredMode.REQUIRED, example = "Perez")
     private String lastname;
+
+    @Column(nullable = false, unique = true)
+    @Schema(defaultValue = "ClientDocNumber", requiredMode = Schema.RequiredMode.REQUIRED, example = "123456789")
     private String doc_number;
 
     public Client(int id, String name, String lastname, String doc_number) {

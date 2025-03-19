@@ -1,5 +1,6 @@
 package coderHouse.JPA.entities;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +18,7 @@ import java.util.List;
 public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(defaultValue = "IdFactura", requiredMode = Schema.RequiredMode.AUTO, example = "1")
     private int id;
 
     @ManyToOne
@@ -25,8 +27,10 @@ public class Invoice {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, updatable = false) // Se setea solo al crear la factura
+    @Schema(defaultValue = "FechaFac", requiredMode = Schema.RequiredMode.AUTO, example = "2025-03-19")
     private Date createdAt = new Date(); // Se inicializa con la fecha actual
 
+    @Schema(defaultValue = "TotalFac", requiredMode = Schema.RequiredMode.REQUIRED, example = "99.9")
     private double total;
 
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
